@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+src/eecs517_project.egg-info/PKG-INFO
+src/eecs517_project.egg-info/SOURCES.txt
+src/eecs517_project.egg-info/dependency_links.txt
+src/eecs517_project.egg-info/entry_points.txt
+src/eecs517_project.egg-info/requires.txt
+src/eecs517_project.egg-info/top_level.txt
+src/eecs517project/__main__.py

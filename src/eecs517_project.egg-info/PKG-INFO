@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: eecs517-project
+Version: 2023.11.17
+Summary: EECS517 project
+Author-email: tyjoto <tyjoto@gmail.com>
+Keywords: EECS517-project
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.10
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: matplotlib>=3.5.2
+Requires-Dist: pandas
+Requires-Dist: scipy

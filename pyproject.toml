@@ -1,0 +1,30 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools>=63.2.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+
+[project]
+name = "eecs517-project"
+version = "v2023.11.17"
+description = "EECS517 project"
+authors = [{ name = "tyjoto", email = "tyjoto@gmail.com" }]
+classifiers = [
+    'License :: OSI Approved :: Apache Software License',
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["EECS517-project"]
+dependencies = [
+    "numpy",
+    "matplotlib>=3.5.2",
+    "pandas",
+    "scipy",
+]
+requires-python = ">=3.10"
+
+
+[project.scripts]
+project = "eecs517project.__main__:main"
