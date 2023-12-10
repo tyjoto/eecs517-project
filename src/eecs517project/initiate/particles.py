@@ -5,9 +5,12 @@ from eecs517project.particles import Particle
 
 def initialize_one(
         m_i, I, D, Vb, T, *args,
-        Vg = 0, amu = True, Z = 1,
+        Vg = 0, amu = True, Z = 1, W = 1,
         **kwargs
 ):
+    # convert m_i [amu] -> m_i [kg] if amu is true
+    if amu is True:
+        m_i = m_i*c.m_p
     # beam parameteres
     A = np.pi*D*D/4 # m^2
     J = I/A     # A/m^2
@@ -26,16 +29,21 @@ def initialize_one(
     vel0 = [vx0, vy0, vz0]
 
     # initial position of each particle (1D)
-    pos0 = [0]
+    pos0 = [0.0]
 
     # determine number of particles need
-    Nparticles = I/Z*T
+    Nparticles = I/(Z*W)*T
+    if Nparticles.is_integer() is True:
+        Nparticles = int(Nparticles)
+    else:
+        print(f"Warning: Nparticles is not integer converting {Nparticles} to {int(np.round(Nparticles))} may need to adjust weighting W: {I/Z/Nparticles*T}")
+        Nparticles = int(np.round(Nparticles))
 
     # determine time particles were born
     #t0 = Nparticles/T
 
     # create particles
-    particles = Particle(m_i,pos=[pos0]*Nparticles, vel=[vel0]*Nparticles, amu=amu)
+    particles = Particle(m_i,pos=[pos0]*Nparticles, vel=[vel0]*Nparticles, amu=False, W = W)
 
     return particles
 

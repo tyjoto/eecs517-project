@@ -6,11 +6,11 @@ import eecs517project.utls.constants as c
 class Particle:
     def __init__(
             self, m_i: float, pos: npt.ArrayLike, vel: npt.ArrayLike, 
-            isotropic: bool = False, amu:bool = True) -> None:
+            isotropic: bool = False, amu:bool = True, W: int | float = 1) -> None:
         self.m_i = m_i*c.m_p if amu is True else m_i
         try:
-            pos = np.array(pos, dtype=np.int64)
-            vel = np.array(vel, dtype=np.int64)
+            pos = np.array(pos)
+            vel = np.array(vel)
         except ValueError as msg:
             raise ValueError(msg)
         except Exception as e:
@@ -18,6 +18,8 @@ class Particle:
         self._xdim, self._xsize = pos.ndim, pos.size
         self._vdim, self._vsize = vel.ndim, vel.size
         self.pos = pos
+        self.vel = vel
+        self._W = W
     
     @property
     def m_i(self):
@@ -31,6 +33,10 @@ class Particle:
             raise TypeError(f"'{val}' is of type '{type(val)}' not of types: '{acceptables}'")
 
     @property
+    def W(self):
+        return self._W
+
+    @property
     def xdim(self):
         return self._xdim
     @property
@@ -41,7 +47,7 @@ class Particle:
         return self._vdim
     @property
     def vsize(self):
-        return self._size
+        return self._vsize
 
     @property
     def pos(self):
@@ -85,5 +91,5 @@ class Particle:
         return energy
     @property
     def ergT(self):
-        energyT = np.linalg.norm(self.erg, axis=1)
+        energyT = np.linalg.norm(self.erg, axis=1).reshape((self.erg.shape[0],1))
         return energyT

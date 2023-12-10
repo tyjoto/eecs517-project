@@ -1,1 +1,1 @@
-from eecs517project.initiate.cross_sections.organizer import initializer
+from eecs517project.initiate.cross_sections.crosssections import initializer

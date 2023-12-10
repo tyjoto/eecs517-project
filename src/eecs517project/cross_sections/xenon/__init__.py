@@ -1,4 +1,4 @@
-from eecs517project.initiate.cross_sections.xenon.xenon import (
-    ion_ion,
-    ion_neutral,
+from eecs517project.cross_sections.xenon.xenon import (
+    CEX,
+    MEX,
 )
