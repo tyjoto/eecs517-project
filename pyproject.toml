@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "eecs517-project"
-version = "v2023.11.17"
+version = "v2023.12.11"
 description = "EECS517 project"
 authors = [{ name = "tyjoto", email = "tyjoto@gmail.com" }]
 classifiers = [

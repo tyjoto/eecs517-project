@@ -212,8 +212,10 @@ def make_plots():
             ax.cla()
             ax.set(yscale=yscale)
             cplot = ax.tricontourf(x,y,z, vmin = vmin, vmax=vmax)
-            ticks = np.linspace(vmin,vmax,11) if vmin is not None and vmax is not None else None
-            #ticks = None
+            ax.scatter(x,y)
+            ax.scatter(x[-13],y[-13],color="r")
+            #ticks = np.linspace(vmin,vmax,11) if vmin is not None and vmax is not None else None
+            ticks = None
             if cax is not None:
                 cax = fig.colorbar(ScalarMappable(norm=cplot.norm, cmap=cplot.cmap), cax=cax.ax, ticks=ticks) 
             else:
@@ -227,6 +229,11 @@ def make_plots():
             ax.set(xlabel=labels[X], ylabel=labels[Y], title=title)#clabel=r"Miss Target [%]")
             cax.set_label(clabels[Z])
             fig.savefig(saveas)
+            if Z==0 and X==1 and Y==0 and T==2:
+                print(f"{A}")
+                print(x,y,z)
+                print(saveas)
+                print(x[-13],y[-13],z[-13])
             return fig, ax, cax
 
         # pressure loop
